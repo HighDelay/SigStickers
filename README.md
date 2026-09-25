@@ -162,12 +162,27 @@ pip install sigstickers
 
 Head to https://pypi.org/project/sigstickers/ for more info
 
+To run this checkout on Windows (including Python 3.14), use a local environment:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m sigstickers
+```
+
+Paste your sticker pack URL at the prompt, then submit a blank line to start the
+download. Files are saved under `downloads` in WebP, PNG, and GIF folders.
+
+Python 3.14 requires `httpcore==0.16.3` with the current Signal client: httpcore
+0.17.x fails during import, and the client's HTTPX dependency prevents using
+httpcore 1.x. The project applies this compatibility pin automatically, along with
+Python 3.14-compatible Pillow and CFFI versions.
+
 ## Language information
 
 ### Built for
 
-This program has been written for Python versions 3.8 - 3.11 and has been tested with both 3.8 and
-3.11
+This project requires Python 3.9 or newer. The test matrix covers Python 3.9 - 3.14.
 
 ## Install Python on Windows
 
@@ -251,7 +266,7 @@ For testing with the version of python used by poetry use
 poetry run pytest
 ```
 
-Alternatively use `tox` to run tests over python 3.8 - 3.11
+Alternatively use `tox` to run tests over Python 3.9 - 3.14
 
 ```sh
 tox

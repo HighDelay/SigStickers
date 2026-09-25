@@ -18,9 +18,14 @@ classifiers = [
 	"Topic :: Multimedia :: Graphics",
 ]
 dependencies = [
+    # httpcore 0.17.x crashes on import on Python 3.14 (typing.Union).
+    # signalstickers-client's httpx cap prevents upgrading to httpcore 1.x.
+    "httpcore==0.16.3; python_version >= '3.14'",
+    "cffi>=2.0.0; python_version >= '3.14'",
     "emoji>=2.14.1",
     "loguru>=0.7.3",
     "pillow>=11.1.0",
+    "pillow>=12.0.0; python_version >= '3.14'",
     "signalstickers-client>=3.3.0",
 ]
 
@@ -83,6 +88,7 @@ branch = true
 legacy_tox_ini = """
 [tox]
 env_list =
+	py314
 	py313
 	py312
 	py311
